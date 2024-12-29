@@ -1,0 +1,11 @@
+<%- include('layouts/header') %>
+<main>
+    <h1>Hello EJS</h1>
+    <h2><%= name %></h2>
+    <form action="/users/create" method="post">
+        <input type="text" name="name">
+        <input type="text" name="email">
+        <button type="submit">Submit</button>
+    </form>
+</main>
+<%- include('layouts/footer') %>
