@@ -11,7 +11,8 @@ import { ProductModule } from './products/product/product.module';
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://127.0.0.1:27017/demo_server'),
-    UserModule, ProductModule
+    UserModule,
+    ProductModule,
   ],
   controllers: [AppController, AboutController],
   providers: [AppService],
