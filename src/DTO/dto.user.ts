@@ -1,4 +1,9 @@
+// export interface dtoUser {
+//   email: string;
+//   name: string;
+// }
 export interface dtoUser {
-  email: string;
-  name: string;
+  firstName: string;
+  lastName: string;
+  isActive: boolean;
 }
