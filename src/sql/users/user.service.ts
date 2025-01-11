@@ -9,7 +9,7 @@ export class UserService {
   constructor(
     @InjectRepository(User)
     private usersRepository: Repository<User>,
-  ) {}
+  ) { }
 
   getAll(): Promise<User[]> {
     return this.usersRepository.find({
