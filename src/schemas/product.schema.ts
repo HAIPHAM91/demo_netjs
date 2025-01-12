@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { HydratedDocument, Types } from 'mongoose';
 
 export type ProductDocument = HydratedDocument<Product>;
 
@@ -13,6 +13,10 @@ export class Product {
 
   @Prop()
   description: string;
+
+  // Thêm khóa ngoại liên kết đến bảng categories
+  @Prop({ type: Types.ObjectId, ref: 'Category' }) 
+  categoryId: Types.ObjectId; 
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

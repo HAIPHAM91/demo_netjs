@@ -1,9 +1,10 @@
-import { Category } from './../sql/categories/category.entity';
+import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Product } from './../sql/products/product.entity';
-import { ProductParams, ProductDTO } from './model/product.model';
+import { Product } from './product.entity';
+import { ProductDTO, ProductParams } from 'src/products/model/product.model';
+import { Category } from '../categories/category.entity'; // Nếu có category entity
 
 @Injectable()
 export class ProductService {

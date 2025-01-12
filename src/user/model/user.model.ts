@@ -1,5 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { PhotoDTO } from './photo.model';
+import { InputType} from '@nestjs/graphql';
 
 @ObjectType()
 export class UserDTO {
@@ -17,4 +18,11 @@ export class UserDTO {
 
   @Field((type) => [PhotoDTO])
   photos: PhotoDTO[];
+}
+@InputType()
+export class UserParams {
+  @Field()
+  firstName: string;
+  @Field()
+  lastName: string;
 }

@@ -11,12 +11,12 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { Params } from 'src/interface/params';
-import { ProductsService } from './products.service';
+import { ProductService } from './products.service';
 import { dtoProduct } from 'src/DTO/dto.product';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private productService: ProductsService) {}
+  constructor(private productService: ProductService) {}
 
   @Get()
   async index(@Res() res: Response) {
