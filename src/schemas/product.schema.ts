@@ -3,7 +3,7 @@ import { HydratedDocument, Types } from 'mongoose';
 
 export type ProductDocument = HydratedDocument<Product>;
 
-@Schema({ timestamps: true })
+@Schema()
 export class Product {
   @Prop()
   name: string;
@@ -16,7 +16,7 @@ export class Product {
 
   // Thêm khóa ngoại liên kết đến bảng categories
   @Prop({ type: Types.ObjectId, ref: 'Category' }) 
-  categoryId: Types.ObjectId; 
+  category: Types.ObjectId; 
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

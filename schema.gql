@@ -16,8 +16,37 @@ type UserDTO {
   photos: [PhotoDTO!]!
 }
 
+type ProductDTO {
+  id: Float!
+  name: String!
+  price: Float!
+  description: String!
+  category: Float!
+}
+
 type Query {
   item: String!
   users: [UserDTO!]!
-  products: String!
+  products: [ProductDTO!]!
+  user(id: Int!): UserDTO!
+  product(id: Int!): ProductDTO!
+}
+
+type Mutation {
+  createUser(user: UserParams!): UserDTO!
+  createProduct(product: ProductParams!): ProductDTO!
+  updateProduct(id: Int!, product: ProductParams!): ProductDTO!
+  deleteProduct(id: Int!): String!
+}
+
+input UserParams {
+  firstName: String!
+  lastName: String!
+}
+
+input ProductParams {
+  name: String!
+  price: Float!
+  description: String!
+  category: Float!
 }

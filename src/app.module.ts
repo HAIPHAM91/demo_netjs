@@ -22,11 +22,17 @@
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './sql/users/user.entity';
-import { UsersModule } from './sql/users/user.module';
-import { Photo } from './sql/photos/photo.entity';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+
+import { User } from './sql/users/user.entity';
+import { Photo } from './sql/photos/photo.entity';
+import { Product } from './sql/products/product.entity';
+import { Category } from './sql/categories/category.entity';
+
+import { UsersModule } from './sql/users/user.module';
+import { ProductsModule } from './sql/products/product.module';
+
 import { ItemResolver } from './item/item.resolver';
 
 @Module({
@@ -42,10 +48,11 @@ import { ItemResolver } from './item/item.resolver';
       username: 'root',
       password: 'root',
       database: 'demo_nestjs',
-      entities: [User, Photo],
+      entities: [User, Photo, Product, Category],
       synchronize: true,
     }),
     UsersModule,
+    ProductsModule,
   ],
   providers: [ItemResolver],
 })

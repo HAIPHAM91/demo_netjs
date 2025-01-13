@@ -15,7 +15,7 @@ export class ProductDTO {
   description: string;
 
   @Field()
-  categoryId: number; 
+  category: number; 
 }
 
 
@@ -31,5 +31,5 @@ export class ProductParams {
   description: string;
 
   @Field()
-  categoryId: number;
+  category: number;
 }
