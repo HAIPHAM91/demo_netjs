@@ -34,6 +34,15 @@ import { UsersModule } from './sql/users/user.module';
 import { ProductsModule } from './sql/products/product.module';
 
 import { ItemResolver } from './item/item.resolver';
+import { JwtService } from '@nestjs/jwt';
+import { AppController } from './app.controller';
+import { AboutController } from './about.controller';
+import { AppService } from './app.service';
+
+import { MailerModule } from '@nestjs-modules/mailer';
+import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter';
+import { join } from 'path';
+import { SendMailService } from './send-mail/send-mail.service';
 
 @Module({
   imports: [
@@ -51,9 +60,33 @@ import { ItemResolver } from './item/item.resolver';
       entities: [User, Photo, Product, Category],
       synchronize: true,
     }),
+
+    MailerModule.forRoot({
+      transport: {
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+          user: 'haiphamfec@gmail.com',
+          pass: 'ryryxwudencnbiea',
+        },
+      },
+      defaults: {
+        from: '"No Reply" <noreply@example.com>',
+      },
+      template: {
+        dir: join(__dirname, './templates'),
+        adapter: new EjsAdapter(),
+        options: {
+          strict: true,
+        },
+      },
+    }),
+
     UsersModule,
     ProductsModule,
   ],
-  providers: [ItemResolver],
+  controllers: [AppController, AboutController],
+  providers: [ItemResolver, AppService, JwtService, SendMailService],
 })
 export class AppModule {}
